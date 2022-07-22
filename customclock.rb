@@ -4,31 +4,14 @@
 class Customclock < Formula
   desc ""
   homepage ""
-  url "https://github.com/MukPan/CustomClock/archive/refs/tags/0.0.1.tar.gz"
-  sha256 "3ba34fac62c8c158349938e6c49cdb828fba2b3d662608dfa70479864a4f0db7"
+  url "https://github.com/MukPan/CustomClock/archive/refs/tags/0.0.2.tar.gz"
+  sha256 "c2c16b17b4a6a0f48e97f22f09b7fddd5ec15356967e09219045de4c9833f972"
   license ""
 
   # depends_on "cmake" => :build
 
-  def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
-    # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
-    system "./configure", *std_configure_args, "--disable-silent-rules"
-    # system "cmake", "-S", ".", "-B", "build", *std_cmake_args
-    system "make install"
-  end
-
-  test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test CustomClock`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+  def install 
+    system "make"
+    bin.install "CustomClock"
   end
 end
